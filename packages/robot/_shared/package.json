@@ -1,0 +1,17 @@
+{
+  "name": "@instagram-robot/shared",
+  "description": "Shared between all scraper packages.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --root-mode upward --extensions \".js,.ts\" --ignore *.spec.ts --out-dir dist --copy-files"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "puppeteer": "3.0.4"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^3.0.1"
+  }
+}

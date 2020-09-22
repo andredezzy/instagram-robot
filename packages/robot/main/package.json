@@ -1,0 +1,25 @@
+{
+  "name": "@instagram-robot/main",
+  "version": "1.0.0",
+  "author": "André 'Dezzy' <@andredezzy>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --root-mode upward --extensions \".js,.ts\" --ignore *.spec.ts --out-dir dist --copy-files",
+    "start": "node dist/shared/index.js",
+    "dev": "ts-node -r tsconfig-paths/register --transpile-only src/shared/index.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@instagram-robot/shared": "*",
+    "date-fns": "^2.16.0",
+    "date-fns-tz": "^1.0.10",
+    "ioredis": "^4.17.3",
+    "lodash": "^4.17.20",
+    "yargs": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.17.3",
+    "@types/lodash": "^4.14.161",
+    "type-fest": "^0.16.0"
+  }
+}

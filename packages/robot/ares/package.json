@@ -1,0 +1,16 @@
+{
+  "name": "@instagram-robot/ares",
+  "version": "1.0.0",
+  "author": "André 'Dezzy' <@andredezzy>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src --root-mode upward --extensions \".js,.ts\" --ignore *.spec.ts --out-dir dist --copy-files",
+    "start": "node dist/index.js",
+    "dev": "ts-node -r tsconfig-paths/register --transpile-only src/index.ts",
+    "test": "jest --passWithNoTests"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
+  },
+  "devDependencies": {}
+}

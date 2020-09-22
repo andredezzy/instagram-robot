@@ -1,0 +1,20 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "outDir": "dist",
+    "strictPropertyInitialization": false,
+    "baseUrl": "src",
+    "paths": {
+      "@scraper/shared/*": [
+        "*"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  # Application
+
+  redis:
+    image: 'bitnami/redis:latest'
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    environment:
+      - REDIS_PASSWORD=redis_password_development
+    volumes:
+      - 'redis_data:/bitnami/redis'
+
+volumes:
+  redis_data:
+    driver: local
