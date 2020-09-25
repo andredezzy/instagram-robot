@@ -1,6 +1,6 @@
 import puppeteer, { LaunchOptions } from 'puppeteer';
 
-import Browser from '@scraper/shared/modules/browser/infra/puppeteer/models/Browser';
+import Browser from '@robot/shared/modules/browser/infra/puppeteer/models/Browser';
 
 import IBrowserProvider from '../models/IBrowserProvider';
 

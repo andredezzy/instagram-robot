@@ -1,1 +1,2 @@
 import './CacheProvider';
+import './ConfigurationProvider';

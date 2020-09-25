@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 
-import IGoToOptionsDTO from '@scraper/shared/modules/browser/dtos/IGoToOptionsDTO';
-import IPage from '@scraper/shared/modules/browser/models/IPage';
+import IGoToOptionsDTO from '@robot/shared/modules/browser/dtos/IGoToOptionsDTO';
+import IPage from '@robot/shared/modules/browser/models/IPage';
 
 class Page implements IPage<puppeteer.Page> {
   constructor(public driver: puppeteer.Page) {}
@@ -30,6 +30,8 @@ class Page implements IPage<puppeteer.Page> {
     text: string,
     options?: { delay: number },
   ): Promise<void> {
+    await this.driver.waitForSelector(selector);
+
     await this.driver.click(selector);
 
     await this.driver.type(selector, String(text), options);

@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 
-import IGoToOptionsDTO from '@scraper/shared/modules/browser/dtos/IGoToOptionsDTO';
+import IGoToOptionsDTO from '@robot/shared/modules/browser/dtos/IGoToOptionsDTO';
 
 export default interface IPage<Page> {
   driver: Page;

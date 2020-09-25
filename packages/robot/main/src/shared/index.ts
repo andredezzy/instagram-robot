@@ -6,9 +6,7 @@ import '@shared/container';
 import { container } from 'tsyringe';
 import { usage, Argv } from 'yargs';
 
-import cacheConfig from '@config/cache';
-import instagramConfig from '@config/instagram';
-
+import IConfigurationProvider from '@shared/container/providers/ConfigurationProvider/models/IConfigurationProvider';
 import Launcher from '@shared/puppeteer/launcher';
 
 interface IArgv extends Argv {
@@ -23,23 +21,20 @@ usage('Usage: $0 <cmd> [options]')
   .command(
     'run',
     'Run instagram robot',
-    yargs => {},
-    (argv: IArgv) => {
+    _yargs => {
+      // add positional options
+    },
+    async (argv: IArgv) => {
+      const configurationProvider = container.resolve<IConfigurationProvider>(
+        'ConfigurationProvider',
+      );
+
+      await configurationProvider.save(argv);
+
       const launcher = container.resolve(Launcher);
 
-      const { username, password, cache_key, headless, verbose } = argv;
-
-      if (username && password) {
-        instagramConfig.username = username;
-        instagramConfig.password = password;
-      }
-
-      if (cache_key) {
-        cacheConfig.key = cache_key;
-      }
-
       launcher
-        .launch({ username, password, headless, verbose })
+        .launch()
         .catch(err => {
           console.log('Occurred an unexpected error:');
           console.log(err);
@@ -62,6 +57,7 @@ usage('Usage: $0 <cmd> [options]')
   .option('cache_key', {
     type: 'string',
     description: 'Set the custom cache key',
+    default: '6772280a5a36a08c5dffcc0feb552338',
   })
   .option('headless', {
     type: 'boolean',

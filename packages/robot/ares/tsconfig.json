@@ -9,7 +9,7 @@
     "strictPropertyInitialization": false,
     "baseUrl": "src",
     "paths": {
-      "@scraper/shared/*": [
+      "@robot/shared/*": [
         "../../_shared/src/*"
       ],
       "@shared/*": [

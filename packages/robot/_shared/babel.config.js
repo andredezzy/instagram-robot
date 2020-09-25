@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     ["module-resolver", {
       alias: {
-        "@scraper/shared": "./src",
+        "@robot/shared": "./src",
         "@shared": "./src/shared",
         "@modules": "./src/modules",
         "@infra": "./src/infra",
