@@ -1,10 +1,10 @@
 import puppeteer from 'puppeteer';
 import { container } from 'tsyringe';
 
-import IGoToOptionsDTO from '@scraper/shared/modules/browser/dtos/IGoToOptionsDTO';
+import IGoToOptionsDTO from '@robot/shared/modules/browser/dtos/IGoToOptionsDTO';
 import IBrowser, {
   Handler,
-} from '@scraper/shared/modules/browser/models/IBrowser';
+} from '@robot/shared/modules/browser/models/IBrowser';
 
 import Page from './Page';
 

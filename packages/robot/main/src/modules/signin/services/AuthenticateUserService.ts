@@ -1,6 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
-import Page from '@scraper/shared/modules/browser/infra/puppeteer/models/Page';
+import Page from '@robot/shared/modules/browser/infra/puppeteer/models/Page';
 
 interface IRequest {
   username: string;
@@ -15,8 +15,20 @@ export default class AuthenticateUserService {
   ) {}
 
   public async execute({ username, password }: IRequest): Promise<boolean> {
-    await this.page.type('form#loginForm input[name="username"]', username);
-    await this.page.type('form#loginForm input[name="password"]', password);
+    await this.page.type('form#loginForm input[name="username"]', username, {
+      delay: 100,
+    });
+
+    await this.page.type('form#loginForm input[name="password"]', password, {
+      delay: 100,
+    });
+
+    const [findLogInButtonElement] = await this.page.findElementsByText(
+      'Log In',
+      'button/div',
+    );
+
+    await this.page.clickForNavigate(findLogInButtonElement);
 
     return true;
   }

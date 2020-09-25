@@ -1,8 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 
-import Page from '@scraper/shared/modules/browser/infra/puppeteer/models/Page';
-
 import instagramConfig from '@config/instagram';
+
+import Page from '@robot/shared/modules/browser/infra/puppeteer/models/Page';
 
 @injectable()
 export default class NavigateToSignInPageService {
@@ -13,5 +13,7 @@ export default class NavigateToSignInPageService {
 
   public async execute(): Promise<void> {
     await this.page.goTo(instagramConfig.pages.signin.url);
+
+    await this.page.driver.waitForSelector('form#loginForm');
   }
 }
