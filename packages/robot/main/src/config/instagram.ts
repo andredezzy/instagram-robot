@@ -5,11 +5,21 @@ interface IRobotInstagramConfig {
     signin: {
       url: string;
     };
+    post: {
+      selectors: {
+        photo_img: string;
+      };
+    };
   };
 
-  testing_account: {
-    username: string;
-    password: string;
+  testing: {
+    account: {
+      username: string;
+      password: string;
+    };
+    post: {
+      url: string;
+    };
   };
 }
 
@@ -18,10 +28,21 @@ export default {
     signin: {
       url: process.env.INSTAGRAM_SIGNIN_PAGE_URL,
     },
+    post: {
+      selectors: {
+        photo_img:
+          'main > div > div > article > div > div > div > div > div > img',
+      },
+    },
   },
 
-  testing_account: {
-    username: process.env.INSTAGRAM_TESTING_ACCOUNT_USERNAME,
-    password: process.env.INSTAGRAM_TESTING_ACCOUNT_PASSWORD,
+  testing: {
+    account: {
+      username: process.env.INSTAGRAM_TESTING_ACCOUNT_USERNAME,
+      password: process.env.INSTAGRAM_TESTING_ACCOUNT_PASSWORD,
+    },
+    post: {
+      url: 'https://www.instagram.com/p/CFZpqVkFIJX/',
+    },
   },
 } as IRobotInstagramConfig;

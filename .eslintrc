@@ -81,7 +81,7 @@
             "external",
             "internal"
           ],
-          "/^@scraper\/shared/",
+          "/^@robot\/shared/",
           "/^@config/",
           "/^@utils/",
           "/^@shared/",

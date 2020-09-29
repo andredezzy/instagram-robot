@@ -1,15 +1,17 @@
 import { container, injectable, inject } from 'tsyringe';
 
+import Browser from '@robot/shared/modules/browser/infra/puppeteer/models/Browser';
+import IBrowser from '@robot/shared/modules/browser/models/IBrowser';
+import IPage from '@robot/shared/modules/browser/models/IPage';
+import IBrowserProvider from '@robot/shared/modules/browser/providers/BrowserProvider/models/IBrowserProvider';
+
 import Timer from '@utils/timer';
 
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import IConfigurationProvider from '@shared/container/providers/ConfigurationProvider/models/IConfigurationProvider';
 
+import PostHandler from '@modules/post/infra/handlers';
 import SignInHandler from '@modules/signin/infra/handlers';
-import Browser from '@robot/shared/modules/browser/infra/puppeteer/models/Browser';
-import IBrowser from '@robot/shared/modules/browser/models/IBrowser';
-import IPage from '@robot/shared/modules/browser/models/IPage';
-import IBrowserProvider from '@robot/shared/modules/browser/providers/BrowserProvider/models/IBrowserProvider';
 
 @injectable()
 export default class Launcher {
@@ -40,7 +42,7 @@ export default class Launcher {
     container.registerInstance<IBrowser<any, any>>('Browser', browser);
     container.registerInstance<IPage<any>>('Page', page);
 
-    browser.run(page, SignInHandler);
+    await browser.run(page, SignInHandler, PostHandler);
 
     timer.stop();
 
