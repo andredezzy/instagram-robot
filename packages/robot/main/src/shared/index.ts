@@ -12,6 +12,8 @@ import Launcher from '@shared/puppeteer/launcher';
 interface IArgv extends Argv {
   username: string;
   password: string;
+  post_url: string;
+  message: string;
   cache_key: string;
   headless: boolean;
   verbose: boolean;
@@ -52,6 +54,16 @@ usage('Usage: $0 <cmd> [options]')
   .option('password', {
     type: 'string',
     description: 'Instagram account password',
+    demandOption: true,
+  })
+  .option('post_url', {
+    type: 'string',
+    description: 'Instagram post URL',
+    demandOption: true,
+  })
+  .option('message', {
+    type: 'string',
+    description: 'Message to comment on instagram post',
     demandOption: true,
   })
   .option('cache_key', {

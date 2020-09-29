@@ -4,27 +4,27 @@ import { IHandler } from '@robot/shared/modules/browser/models/IBrowser';
 
 import IConfigurationProvider from '@shared/container/providers/ConfigurationProvider/models/IConfigurationProvider';
 
-import SignInPage from '@modules/signin/infra/puppeteer/pages/SignInPage';
+import PostPage from '@modules/post/infra/puppeteer/pages/PostPage';
 
 @injectable()
-class SignInHandler implements IHandler {
+class PostHandler implements IHandler {
   constructor(
     @inject('ConfigurationProvider')
     private configurationProvider: IConfigurationProvider,
   ) {}
 
   public async handle(): Promise<void> {
-    const signInPage = new SignInPage();
+    const postPage = new PostPage();
 
-    await signInPage.navigateTo();
-
-    const { username, password } = await this.configurationProvider.pick([
-      'username',
-      'password',
+    const { post_url, message } = await this.configurationProvider.pick([
+      'post_url',
+      'message',
     ]);
 
-    await signInPage.signIn({ username, password });
+    await postPage.navigateTo(post_url);
+
+    await postPage.comment(message);
   }
 }
 
-export default SignInHandler;
+export default PostHandler;
