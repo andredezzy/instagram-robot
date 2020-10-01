@@ -1,5 +1,6 @@
 {
   "name": "instagram-robot",
+  "description": "A instagram robot with a lot of features, e.g. follow people, comment on some post, etc.",
   "private": true,
   "version": "1.0.0",
   "author": "André 'Dezzy' <@andredezzy>",
@@ -20,9 +21,10 @@
     "packages/robot/*"
   ],
   "scripts": {
+    "build": "yarn build:robot",
     "build:robot": "lerna run build --scope @instagram-robot/* --stream",
     "lint:fix": "eslint --fix packages --ext ts,tsx",
-    "test": "lerna run test --stream --parallel -- --watchAll false",
+    "test": "yarn build && lerna run test --stream --parallel -- --watchAll false",
     "robot:main": "yarn workspace @instagram-robot/main",
     "robot:ares": "yarn workspace @instagram-robot/ares"
   },
