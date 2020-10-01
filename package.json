@@ -21,10 +21,9 @@
     "packages/robot/*"
   ],
   "scripts": {
-    "build": "yarn build:robot",
     "build:robot": "lerna run build --scope @instagram-robot/* --stream",
     "lint:fix": "eslint --fix packages --ext ts,tsx",
-    "test": "yarn build && lerna run test --stream --parallel -- --watchAll false",
+    "test": "lerna run test --stream --parallel -- --watchAll false",
     "robot:main": "yarn workspace @instagram-robot/main",
     "robot:ares": "yarn workspace @instagram-robot/ares"
   },
