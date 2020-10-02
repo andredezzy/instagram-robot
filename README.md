@@ -1,4 +1,4 @@
-<h1 align="center">Instagram Robot 🤖</h1>
+<h1 align="center">🤖 Instagram Robot</h1>
 
 <div align="center">
 
