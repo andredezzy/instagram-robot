@@ -2,6 +2,8 @@ import { injectable, inject } from 'tsyringe';
 
 import Page from '@robot/shared/modules/browser/infra/puppeteer/models/Page';
 
+import sleep from '@utils/sleep';
+
 interface IRequest {
   username: string;
   password: string;
@@ -23,12 +25,35 @@ export default class AuthenticateUserService {
       delay: 100,
     });
 
-    const [findLogInButtonElement] = await this.page.findElementsByText(
-      'Log In',
-      'button/div',
-    );
+    let tryToLogin = true;
+    let attempts = 0;
 
-    await this.page.clickForNavigate(findLogInButtonElement);
+    while (tryToLogin && attempts < 3) {
+      try {
+        const [findLogInButtonElement] = await this.page.findElementsByText(
+          'Log In',
+          'button/div',
+        );
+
+        await this.page.clickForNavigate(findLogInButtonElement);
+
+        tryToLogin = false;
+      } catch {
+        const [
+          findSignInErrorMessageElement,
+        ] = await this.page.findElementsBySelector(
+          'div p#slfErrorAlert[role="alert"]',
+        );
+
+        if (findSignInErrorMessageElement) {
+          await sleep(120000 + 60000 * attempts);
+        } else {
+          tryToLogin = false;
+        }
+      }
+
+      attempts++;
+    }
 
     return true;
   }
