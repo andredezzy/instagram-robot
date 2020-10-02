@@ -28,7 +28,11 @@ export default class AuthenticateUserService {
     let tryToLogin = true;
     let attempts = 0;
 
-    while (tryToLogin && attempts < 3) {
+    while (tryToLogin) {
+      if (attempts > 3) {
+        return false;
+      }
+
       try {
         const [findLogInButtonElement] = await this.page.findElementsByText(
           'Log In',
