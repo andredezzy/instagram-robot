@@ -10,10 +10,29 @@ class Page implements IPage<puppeteer.Page> {
     url: string,
     options?: IGoToOptionsDTO,
   ): Promise<puppeteer.Response> {
-    return this.driver.goto(url, {
+    const response = this.driver.goto(url, {
       waitUntil: 'networkidle2',
       ...options,
     });
+
+    await this.driver.setExtraHTTPHeaders({
+      'Accept-Language': 'en',
+    });
+
+    await this.driver.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'language', {
+        get() {
+          return 'en';
+        },
+      });
+      Object.defineProperty(navigator, 'languages', {
+        get() {
+          return ['en'];
+        },
+      });
+    });
+
+    return response;
   }
 
   public async select(

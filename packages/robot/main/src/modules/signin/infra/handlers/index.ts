@@ -1,5 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
+import AppError from '@robot/shared/errors/AppError';
 import { IHandler } from '@robot/shared/modules/browser/models/IBrowser';
 
 import IConfigurationProvider from '@shared/container/providers/ConfigurationProvider/models/IConfigurationProvider';
@@ -23,7 +24,11 @@ class SignInHandler implements IHandler {
       'password',
     ]);
 
-    await signInPage.signIn({ username, password });
+    const result = await signInPage.signIn({ username, password });
+
+    if (!result) {
+      throw new AppError('It was not able to sign in.');
+    }
   }
 }
 

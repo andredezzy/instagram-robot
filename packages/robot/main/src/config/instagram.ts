@@ -30,8 +30,7 @@ export default {
     },
     post: {
       selectors: {
-        photo_img:
-          'main > div > div > article > div > div > div > div > div > img',
+        photo_img: 'div > div > img',
       },
     },
   },
