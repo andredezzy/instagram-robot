@@ -16,6 +16,14 @@
 
 A instagram robot with a lot of features, e.g. follow people, comment on some post, etc.
 
+## Setup
+
+```sh
+docker-compose up -d
+```
+
+> You need to configure the environment variables, you can find the examples on: `packages/**/.env.example`
+
 ## Install
 
 ```sh
