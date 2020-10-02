@@ -26,7 +26,7 @@ class SignInHandler implements IHandler {
 
     const result = await signInPage.signIn({ username, password });
 
-    if (result) {
+    if (!result) {
       throw new AppError('It was not able to sign in.');
     }
   }
