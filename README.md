@@ -14,7 +14,8 @@
 
 ## Overview
 
-A instagram robot with a lot of features, e.g. follow people, comment on some post, etc.
+A instagram robot with a lot of features, e.g. follow people, comment on some post, etc. <br>
+🚧 This project is under development 🚧
 
 ## Setup
 
@@ -22,7 +23,8 @@ A instagram robot with a lot of features, e.g. follow people, comment on some po
 docker-compose up -d
 ```
 
-> You need to configure the environment variables, you can find the examples on: `packages/**/.env.example`
+> You need to configure the environment variables, you can find the examples on: `packages/**/.env.example` <br>
+> Copy the `.env.example` file and rename to `.env`, then you can change the values.
 
 ## Install
 

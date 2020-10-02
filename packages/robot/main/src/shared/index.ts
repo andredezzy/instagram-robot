@@ -69,7 +69,7 @@ usage('Usage: $0 <cmd> [options]')
   .option('cache_key', {
     type: 'string',
     description: 'Set the custom cache key',
-    default: '6772280a5a36a08c5dffcc0feb552338',
+    default: process.env.REDIS_DEFAULT_CACHE_KEY,
   })
   .option('headless', {
     type: 'boolean',
