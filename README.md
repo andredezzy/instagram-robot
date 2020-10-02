@@ -14,7 +14,7 @@
 
 ## Overview
 
-> A instagram robot with a lot of features, e.g. follow people, comment on some post, etc.
+A instagram robot with a lot of features, e.g. follow people, comment on some post, etc.
 
 ## Install
 
