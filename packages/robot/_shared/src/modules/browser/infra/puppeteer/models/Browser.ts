@@ -21,6 +21,23 @@ class Browser implements IBrowser<puppeteer.Browser, Page> {
       height: 768,
     });
 
+    await page.setExtraHTTPHeaders({
+      'Accept-Language': 'en',
+    });
+
+    await page.evaluateOnNewDocument(() => {
+      Object.defineProperty(navigator, 'language', {
+        get() {
+          return 'en';
+        },
+      });
+      Object.defineProperty(navigator, 'languages', {
+        get() {
+          return ['en'];
+        },
+      });
+    });
+
     return new Page(page);
   }
 
