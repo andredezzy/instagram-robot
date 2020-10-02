@@ -10,6 +10,11 @@ interface IRobotInstagramConfig {
         photo_img: string;
       };
     };
+    profile: {
+      selectors: {
+        avatar_img: string;
+      };
+    };
   };
 
   testing: {
@@ -18,6 +23,9 @@ interface IRobotInstagramConfig {
       password: string;
     };
     post: {
+      url: string;
+    };
+    profile: {
       url: string;
     };
   };
@@ -33,6 +41,11 @@ export default {
         photo_img: 'div > div > img',
       },
     },
+    profile: {
+      selectors: {
+        avatar_img: 'main > div > header > div > div > span > img',
+      },
+    },
   },
 
   testing: {
@@ -42,6 +55,9 @@ export default {
     },
     post: {
       url: 'https://www.instagram.com/p/CFZpqVkFIJX/',
+    },
+    profile: {
+      url: 'https://www.instagram.com/andredezzy.dev/',
     },
   },
 } as IRobotInstagramConfig;

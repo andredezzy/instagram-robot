@@ -1,5 +1,6 @@
 import { injectable, inject } from 'tsyringe';
 
+import AppError from '@robot/shared/errors/AppError';
 import Page from '@robot/shared/modules/browser/infra/puppeteer/models/Page';
 
 import sleep from '@utils/sleep';
@@ -30,7 +31,7 @@ export default class AuthenticateUserService {
 
     while (tryToLogin) {
       if (attempts > 3) {
-        return false;
+        throw new AppError('It was not able to sign in.');
       }
 
       try {

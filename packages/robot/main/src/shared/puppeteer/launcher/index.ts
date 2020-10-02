@@ -10,7 +10,8 @@ import Timer from '@utils/timer';
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
 import IConfigurationProvider from '@shared/container/providers/ConfigurationProvider/models/IConfigurationProvider';
 
-import PostHandler from '@modules/post/infra/handlers';
+// import PostHandler from '@modules/post/infra/handlers';
+import ProfileHandler from '@modules/profile/infra/handlers';
 import SignInHandler from '@modules/signin/infra/handlers';
 
 @injectable()
@@ -42,7 +43,7 @@ export default class Launcher {
     container.registerInstance<IBrowser<any, any>>('Browser', browser);
     container.registerInstance<IPage<any>>('Page', page);
 
-    await browser.run(page, SignInHandler, PostHandler);
+    await browser.run(page, SignInHandler, /* PostHandler */ ProfileHandler);
 
     timer.stop();
 
